@@ -19,7 +19,7 @@ export interface IServerItem {
 	hasCheck?: boolean;
 }
 
-const defaultLogo = require('../../static/images/logo.png');
+const defaultLogo = require('../../static/images/lg_hs.png');
 
 const ServerItem = React.memo(({ item, onPress, onLongPress, hasCheck }: IServerItem) => {
 	const { theme } = useTheme();
@@ -36,10 +36,11 @@ const ServerItem = React.memo(({ item, onPress, onLongPress, hasCheck }: IServer
 			<View style={styles.serverItemContainer}>
 				{item.iconURL ? (
 					<FastImage
-						source={{
-							uri: item.iconURL,
-							priority: FastImage.priority.high
-						}}
+						// source={{
+						// 	uri: item.iconURL,
+						// 	priority: FastImage.priority.high
+						// }}
+						source={require('../../static/images/lg_hs.png')}
 						// @ts-ignore TODO: Remove when updating FastImage
 						defaultSource={defaultLogo}
 						style={styles.serverIcon}

@@ -347,7 +347,7 @@ class NewServerView extends React.Component<INewServerViewProps, INewServerViewS
 								height: verticalScale({ size: 100, height })
 							}
 						]}
-						source={require('../../static/images/logo.png')}
+						source={require('../../static/images/lg_hs.png')}
 						fadeDuration={0}
 					/>
 					<Text
@@ -360,7 +360,7 @@ class NewServerView extends React.Component<INewServerViewProps, INewServerViewS
 							}
 						]}
 					>
-						Rocket.Chat
+						HySpace
 					</Text>
 					<Text
 						style={[

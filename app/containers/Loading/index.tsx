@@ -115,7 +115,7 @@ const Loading = (): React.ReactElement | null => {
 						]}
 					/>
 					<Animated.Image
-						source={require('../../static/images/logo.png')}
+						source={require('../../static/images/lg_hs2.png')}
 						style={[styles.image, animatedScale]}
 						testID={LOADING_IMAGE_TEST_ID}
 					/>
