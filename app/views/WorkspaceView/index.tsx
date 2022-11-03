@@ -70,14 +70,15 @@ class WorkspaceView extends React.Component<IWorkSpaceProp, any> {
 	};
 
 	render() {
-		const { theme, Site_Name, Site_Url, Assets_favicon_512, server, showLoginButton } = this.props;
-
+		const { theme, Site_Url, Assets_favicon_512, server, showLoginButton } = this.props;
+		// Site_Name,
 		return (
 			<FormContainer testID='workspace-view'>
 				<FormContainerInner>
 					<View style={styles.alignItemsCenter}>
 						<ServerAvatar theme={theme} url={server} image={Assets_favicon_512?.url ?? Assets_favicon_512?.defaultUrl} />
-						<Text style={[styles.serverName, { color: themes[theme].titleText }]}>{Site_Name}</Text>
+						<Text style={[styles.serverName, { color: themes[theme].titleText }]}>HySpace</Text>
+						{/* {Site_Name} */}
 						<Text style={[styles.serverUrl, { color: themes[theme].auxiliaryText }]}>{Site_Url}</Text>
 					</View>
 					{showLoginButton ? (

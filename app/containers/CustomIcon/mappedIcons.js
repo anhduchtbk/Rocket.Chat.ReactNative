@@ -1,4 +1,7 @@
 export const mappedIcons = {
+	'steam': 60076,
+	'earth': 59850,
+	'sphere': 59849,
 	'lamp-bulb': 59812,
 	'basketball': 59776,
 	'percentage': 59777,

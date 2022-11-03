@@ -78,6 +78,7 @@ import {
 	InsideStackParamList,
 	NewMessageStackParamList,
 	ProfileStackParamList,
+	SettingsLanguageParamList,
 	SettingsStackParamList
 } from './types';
 
@@ -172,7 +173,7 @@ const SettingsStackNavigator = () => {
 				component={E2EEncryptionSecurityView}
 				options={E2EEncryptionSecurityView.navigationOptions}
 			/>
-			<SettingsStack.Screen name='LanguageView' component={LanguageView} />
+			{/* <SettingsStack.Screen name='LanguageView' component={LanguageView} /> */}
 			<SettingsStack.Screen name='ThemeView' component={ThemeView} />
 			<SettingsStack.Screen name='DefaultBrowserView' component={DefaultBrowserView} />
 			<SettingsStack.Screen
@@ -212,6 +213,19 @@ const DisplayPrefStackNavigator = () => {
 	);
 };
 
+// SettingsLanguageNavigator
+const SettingsLanguage = createStackNavigator<SettingsLanguageParamList>();
+const SettingsLanguageNavigator = () => {
+	const { theme } = React.useContext(ThemeContext);
+	return (
+		<SettingsLanguage.Navigator
+			screenOptions={{ ...defaultHeader, ...themedHeader(theme), ...StackAnimation } as StackNavigationOptions}
+		>
+			<SettingsLanguage.Screen name='LanguageView' component={LanguageView} />
+		</SettingsLanguage.Navigator>
+	);
+};
+
 // DrawerNavigator
 const Drawer = createDrawerNavigator<DrawerParamList>();
 const DrawerNavigator = () => {
@@ -235,6 +249,7 @@ const DrawerNavigator = () => {
 			<Drawer.Screen name='SettingsStackNavigator' component={SettingsStackNavigator} />
 			<Drawer.Screen name='AdminPanelStackNavigator' component={AdminPanelStackNavigator} />
 			<Drawer.Screen name='DisplayPrefStackNavigator' component={DisplayPrefStackNavigator} />
+			<Drawer.Screen name='SettingsLanguageNavigator' component={SettingsLanguageNavigator} />
 		</Drawer.Navigator>
 	);
 };

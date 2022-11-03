@@ -194,13 +194,13 @@ const SettingsView = (): React.ReactElement => {
 				<List.Section>
 					<List.Separator />
 					<List.Item title='Contact_us' onPress={sendEmail} showActionIndicator testID='settings-view-contact' />
-					<List.Separator />
+					{/* <List.Separator />
 					<List.Item
 						title='Language'
 						onPress={() => navigateToScreen('LanguageView')}
 						showActionIndicator
 						testID='settings-view-language'
-					/>
+					/> */}
 					<List.Separator />
 					{!isFDroidBuild ? (
 						<>

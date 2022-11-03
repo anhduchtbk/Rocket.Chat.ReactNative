@@ -207,6 +207,13 @@ export type SettingsStackParamList = {
 	DisplayPrefsView: undefined;
 };
 
+export type SettingsLanguageParamList = {
+	SecurityPrivacyView: undefined;
+	E2EEncryptionSecurityView: undefined;
+	LanguageView: undefined;
+	ThemeView: undefined;
+};
+
 export type AdminPanelStackParamList = {
 	AdminPanelView: undefined;
 };
@@ -221,6 +228,7 @@ export type DrawerParamList = {
 	SettingsStackNavigator: NavigatorScreenParams<SettingsStackParamList>;
 	AdminPanelStackNavigator: NavigatorScreenParams<AdminPanelStackParamList>;
 	DisplayPrefStackNavigator: NavigatorScreenParams<DisplayPrefStackParamList>;
+	SettingsLanguageNavigator: NavigatorScreenParams<SettingsLanguageParamList>;
 };
 
 export type NewMessageStackParamList = {

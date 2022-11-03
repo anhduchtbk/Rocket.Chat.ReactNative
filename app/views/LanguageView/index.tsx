@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
+import * as HeaderButton from '../../containers/HeaderButton';
 import { useAppSelector } from '../../lib/hooks';
 import { appStart } from '../../actions/app';
 import { setUser } from '../../actions/login';
@@ -30,6 +31,19 @@ const LanguageView = () => {
 
 	const dispatch = useDispatch();
 	const navigation = useNavigation<StackNavigationProp<SettingsStackParamList, 'LanguageView'>>();
+	const isMasterDetail = useAppSelector(state => state.app.isMasterDetail);
+
+	useLayoutEffect(() => {
+		navigation.setOptions({
+			headerLeft: () =>
+				isMasterDetail ? (
+					<HeaderButton.CloseModal navigation={navigation} testID='settings-Language-close' />
+				) : (
+					<HeaderButton.Drawer navigation={navigation} testID='settings-Language-drawer' />
+				),
+			title: I18n.t('SettingsLanguage')
+		});
+	}, [navigation, isMasterDetail]);
 
 	useLayoutEffect(() => {
 		navigation.setOptions({

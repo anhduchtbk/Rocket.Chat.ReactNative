@@ -213,6 +213,14 @@ class Sidebar extends Component<ISidebarProps, ISidebarState> {
 					theme={theme!}
 					current={this.currentItemKey === 'SettingsStackNavigator'}
 				/>
+				<SidebarItem
+					text={I18n.t('SettingsLanguage')}
+					left={<CustomIcon name='steam' size={20} color={themes[theme!].titleText} />}
+					onPress={() => this.sidebarNavigate('SettingsLanguageNavigator')}
+					testID='sidebar-language'
+					theme={theme!}
+					current={this.currentItemKey === 'SettingsLanguageNavigator'}
+				/>
 				{this.renderAdmin()}
 			</>
 		);
