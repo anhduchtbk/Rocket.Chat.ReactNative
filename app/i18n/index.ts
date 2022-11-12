@@ -6,9 +6,10 @@ import 'moment/min/locales';
 
 import { toMomentLocale } from './moment';
 import { isRTL } from './isRTL';
-import englishJson from './locales/en.json';
+// import englishJson from './locales/en.json';
+import tiengvietJson from './locales/vi.json';
 
-type TTranslatedKeys = keyof typeof englishJson;
+type TTranslatedKeys = keyof typeof tiengvietJson;
 
 export { isRTL };
 
@@ -19,6 +20,11 @@ interface ILanguage {
 }
 
 export const LANGUAGES: ILanguage[] = [
+	{
+		label: 'Tiếng Việt',
+		value: 'vi',
+		file: () => require('./locales/vi.json')
+	},
 	{
 		label: 'English',
 		value: 'en',
@@ -92,7 +98,7 @@ export const LANGUAGES: ILanguage[] = [
 ];
 
 interface ITranslations {
-	[language: string]: () => typeof englishJson;
+	[language: string]: () => typeof tiengvietJson;
 }
 
 const translations = LANGUAGES.reduce((ret, item) => {
@@ -107,10 +113,10 @@ export const setLanguage = (l: string) => {
 	// server uses lowercase pattern (pt-br), but we're forced to use standard pattern (pt-BR)
 	let locale = LANGUAGES.find(ll => ll.value.toLowerCase() === l.toLowerCase())?.value;
 	if (!locale) {
-		locale = 'en';
+		locale = 'vi';
 	}
 	// don't go forward if it's the same language and default language (en) was setup already
-	if (i18n.locale === locale && i18n.translations?.en) {
+	if (i18n.locale === locale && i18n.translations?.vi) {
 		return;
 	}
 	i18n.locale = locale;
@@ -123,13 +129,13 @@ export const setLanguage = (l: string) => {
 	moment.locale(toMomentLocale(locale));
 };
 
-i18n.translations = { en: translations.en?.() };
-const defaultLanguage = { languageTag: 'en', isRTL: false };
+i18n.translations = { vi: translations.vi?.() };
+const defaultLanguage = { languageTag: 'vi', isRTL: false };
 const availableLanguages = Object.keys(translations);
 const { languageTag } = RNLocalize.findBestAvailableLanguage(availableLanguages) || defaultLanguage;
 
 // @ts-ignore
-i18n.isTranslated = (text?: string) => text in englishJson;
+i18n.isTranslated = (text?: string) => text in tiengvietJson;
 
 setLanguage(languageTag);
 i18n.fallbacks = true;

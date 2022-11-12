@@ -27,7 +27,7 @@ const LanguageView = () => {
 		languageDefault: getUserSelector(state).language,
 		id: getUserSelector(state).id
 	}));
-	const language = languageDefault || 'en';
+	const language = languageDefault || 'vi';
 
 	const dispatch = useDispatch();
 	const navigation = useNavigation<StackNavigationProp<SettingsStackParamList, 'LanguageView'>>();
