@@ -6,10 +6,10 @@ import 'moment/min/locales';
 
 import { toMomentLocale } from './moment';
 import { isRTL } from './isRTL';
-// import englishJson from './locales/en.json';
-import tiengvietJson from './locales/vi.json';
+import englishJson from './locales/en.json';
+// import tiengvietJson from './locales/vi.json';
 
-type TTranslatedKeys = keyof typeof tiengvietJson;
+type TTranslatedKeys = keyof typeof englishJson;
 
 export { isRTL };
 
@@ -98,7 +98,7 @@ export const LANGUAGES: ILanguage[] = [
 ];
 
 interface ITranslations {
-	[language: string]: () => typeof tiengvietJson;
+	[language: string]: () => typeof englishJson;
 }
 
 const translations = LANGUAGES.reduce((ret, item) => {
@@ -113,10 +113,10 @@ export const setLanguage = (l: string) => {
 	// server uses lowercase pattern (pt-br), but we're forced to use standard pattern (pt-BR)
 	let locale = LANGUAGES.find(ll => ll.value.toLowerCase() === l.toLowerCase())?.value;
 	if (!locale) {
-		locale = 'vi';
+		locale = 'en';
 	}
 	// don't go forward if it's the same language and default language (en) was setup already
-	if (i18n.locale === locale && i18n.translations?.vi) {
+	if (i18n.locale === locale && i18n.translations?.en) {
 		return;
 	}
 	i18n.locale = locale;
@@ -129,13 +129,13 @@ export const setLanguage = (l: string) => {
 	moment.locale(toMomentLocale(locale));
 };
 
-i18n.translations = { vi: translations.vi?.() };
-const defaultLanguage = { languageTag: 'vi', isRTL: false };
+i18n.translations = { en: translations.en?.() };
+const defaultLanguage = { languageTag: 'en', isRTL: false };
 const availableLanguages = Object.keys(translations);
 const { languageTag } = RNLocalize.findBestAvailableLanguage(availableLanguages) || defaultLanguage;
 
 // @ts-ignore
-i18n.isTranslated = (text?: string) => text in tiengvietJson;
+i18n.isTranslated = (text?: string) => text in englishJson;
 
 setLanguage(languageTag);
 i18n.fallbacks = true;
